@@ -1,5 +1,5 @@
 module.exports = {
-    name: '',
+    name: 'ping',
     description: false,
     execute: (message) => {
         message.reply('Idiota.');
