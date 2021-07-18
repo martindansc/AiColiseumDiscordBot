@@ -21,7 +21,7 @@ function showGenericHelp(commands) {
 
     data.push('Here\'s a list of all my commands:');
     data.push(commands.filter(command => !command.private).map(command => command.name).join(', '));
-    data.push(`\nYou can send \`${Config.prefix}help [command name]\` to get info on a specific command!`);
+    data.push(`\nYou can send \`${Config.prefix}help [command name]\` to get information on a specific command!`);
 
     return data;
 }
@@ -29,9 +29,9 @@ function showGenericHelp(commands) {
 
 module.exports = {
 	name: 'help',
-	description: 'List all of my commands or info about a specific command.',
+	description: 'List all of my commands or information about a specific command.',
 	args: ['command name'],
-	cooldown: 5,
+	cooldown: 1,
 	execute(message, args) {
 		const data = [];
 		const { commands } = message.client.commands;

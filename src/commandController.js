@@ -45,7 +45,7 @@ class CommandController {
     }
 
     getCommandButton(button) {
-        const args = button.id.slice(Config.prefix.length).trim().split(/ +/);
+        const args = button.id.trim().split(/ +/);
 
         const commandName = args.shift().toLowerCase();
         if(button.values) args = args.append(button.values);

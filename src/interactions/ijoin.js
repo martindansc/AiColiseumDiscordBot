@@ -1,11 +1,13 @@
 const { joinChallange, leaveChallange} = require('../functions/joinChallange');
 
 module.exports = {
-    name: 'join',
-    description: 'Adds you to a competition',
+    name: 'ijoin',
+    description: 'Interaction that adds yourself to a competition',
     args: ['Competition to join'],
+    private: true,
     execute: async (button, args) => {
         let competition = args[0];
+
         await button.reply.defer();
 
         if(!button.clicker.member) await button.clicker.fetch();
@@ -15,5 +17,6 @@ module.exports = {
         else {
             await joinChallange(button.clicker.member, button.guild, competition);
         }
+
     }
 };

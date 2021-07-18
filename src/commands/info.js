@@ -12,7 +12,7 @@ August 2nd, 19:00: Stream of the Eduard Khil Tournament.
 August 8th, 23:59: Submission deadline for the Final Tournament.
 August 9th, 19:00: Stream of the Final Tournament.
 
-More info here: https://www.coliseum.ai/aicoliseum2021?lang=en&tournament=aic2021`;
+More information here: https://www.coliseum.ai/AIColiseum2021?lang=en&tournament=aic2021`;
 
 module.exports = {
     name: 'info',

@@ -4,9 +4,9 @@ const { MessageMenuOption, MessageMenu, MessageButton, MessageActionRow } = requ
 
 function joinList() {
     const option1 = new MessageMenuOption()
-        .setLabel('AiChallange')
+        .setLabel('AIChallange')
         .setEmoji('📚')
-        .setValue('AiChallange')
+        .setValue('AIChallange')
         .setDescription('For middle and high school in Catalonia.');
 
     const option2 = new MessageMenuOption()
@@ -29,13 +29,13 @@ function joinList() {
 function joinButtons() {
     let button1 = new MessageButton()
         .setStyle("blurple")
-        .setLabel('AiColiseum') 
-        .setID('ijoin AiColiseum');
+        .setLabel('AIColiseum') 
+        .setID('ijoin AIColiseum');
 
     let button2 = new MessageButton()
         .setStyle("green")
-        .setLabel('AiChallange') 
-        .setID('ijoin AiChallange');
+        .setLabel('AIChallange') 
+        .setID('ijoin AIChallange');
     
     let button3 = new MessageButton()
         .setStyle("red")
@@ -53,8 +53,8 @@ function joinButtons() {
         related to the competition. You can also leave if you want to stop 
         reciving notifications.
         
-        **AiChallange:** Competition for middle and high school students located in Catalonia.
-        **AiColisuem:** Main competition open to everyone.`,
+        **AIChallange:** Competition for middle and high school students around Catalonia (only in catalan).
+        **AIColiseum:** Main competition open to everyone.`,
         buttons
     };
 }

@@ -10,7 +10,7 @@ const joinChallange = async function (member, guild, competition) {
         return;
     }
 
-    if(competition !== 'AiChallange' && competition !== 'AiColiseum') {
+    if(competition !== 'AIChallange' && competition !== 'AIColiseum') {
         throw 'Invalid competition:' + competition;
     }
 
@@ -19,7 +19,7 @@ const joinChallange = async function (member, guild, competition) {
     let yearCompetitionRole =  {
         name: yearCompetition
     }
-    yearCompetitionRole.color = competition == 'AiColiseum' ? 'BLUE' : 'GREEN'
+    yearCompetitionRole.color = competition == 'AIColiseum' ? 'BLUE' : 'GREEN'
 
     await createRole(guild, yearCompetitionRole);
     await addRoleToUser(member, guild, yearCompetition);
@@ -36,7 +36,7 @@ const joinChallange = async function (member, guild, competition) {
 const leaveChallange = async function(member, guild) {
     const userRoles = await getUserRoles(member);
     for(const [roleId, userRole] of userRoles) {
-        if(userRole.name.startsWith('AiChallange') || userRole.name.startsWith('AiColiseum')) {
+        if(userRole.name.startsWith('AIChallange') || userRole.name.startsWith('AIColiseum')) {
             await removeRole(member, userRole);
         }
     }

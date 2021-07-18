@@ -18,7 +18,7 @@ const removeRole = async function(member, role) {
 }
 
 const getUserRoles =  async function(member) {
-    await member.fetch();
+    await member.fetch(true);
     return member.roles.cache;
 }
 
