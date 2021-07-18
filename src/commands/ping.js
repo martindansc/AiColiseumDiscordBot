@@ -1,6 +1,6 @@
 module.exports = {
     name: 'ping',
-    description: false,
+    description: 'Simple command for checking bot status',
     execute: (message) => {
         message.reply('pong');
     }

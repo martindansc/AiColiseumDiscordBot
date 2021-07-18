@@ -1,6 +1,6 @@
 const Config = require('../config');
-const { has } = require('../functions/rolesFunctions');
-const { MessageMenuOption, MessageMenu, MessageButton, MessageButtonStyles, MessageActionRow } = require('discord-buttons');
+const { has, userHasRole } = require('../functions/rolesFunctions');
+const { MessageMenuOption, MessageMenu, MessageButton, MessageActionRow } = require('discord-buttons');
 
 function joinList() {
     const option1 = new MessageMenuOption()
@@ -53,7 +53,7 @@ function joinButtons() {
         related to the competition. You can also leave if you want to stop 
         reciving notifications.
         
-        **AiChallange:** Competition for middle and high school students
+        **AiChallange:** Competition for middle and high school students located in Catalonia.
         **AiColisuem:** Main competition open to everyone.`,
         buttons
     };
@@ -62,8 +62,9 @@ function joinButtons() {
 module.exports = {
     name: 'createJoinButtons',
     description: 'Adds the competition buttons',
-    permissions: async function() {
-        return 
+    private: true,
+    permissions: async function(message) {
+        return userHasRole(message.member, 'admin');
     },
     execute: async (message) => {
         const {text, buttons} = joinButtons(message);

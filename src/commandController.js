@@ -3,6 +3,15 @@ const Config = require('./config');
 const Discord = require('discord.js');
 const { sendDm } = require('./functions/reply');
 
+/* Commands properties
+
+name
+description
+args
+cooldown
+
+*/
+
 class CommandController {
     
     constructor() {
@@ -50,7 +59,7 @@ class CommandController {
 
         const now = Date.now();
         const timestamps = this.cooldowns.get(command.name);
-        const cooldownAmount = (command.cooldown || 10) * 1000;
+        const cooldownAmount = (command.cooldown || Config.defaultCooldown) * 1000;
 
         if (timestamps.has(author.id)) {
             const expirationTime = timestamps.get(author.id) + cooldownAmount;
@@ -84,7 +93,7 @@ class CommandController {
         try {
             await command.execute(message, args);
         } catch (error) {
-            console.error(error);
+            console.log(error);
             await sendDm(message.author, 'There was an error trying to execute that command! Please contact and administrator if it persists.');
             return;
         }
@@ -98,7 +107,7 @@ class CommandController {
         
         if(!button.clicker.member) await button.clicker.fetch();
 
-        const cooldown = await this.getCooldown(button.clicker.user, command);
+        const cooldown = this.getCooldown(button.clicker.user, command);
         if(cooldown) {
             await sendDm(button.clicker.user, `Please wait ${cooldown.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
             return;
@@ -107,7 +116,7 @@ class CommandController {
         try {
             await command.execute(button, args);
         } catch (error) {
-            console.error(error);
+            console.log(error);
             await sendDm(button.clicker.user, 'There was an error trying to execute that interaction! Please contact and administrator if it persists.');
         }
     }

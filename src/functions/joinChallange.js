@@ -1,7 +1,14 @@
 const { addRoleToUser, createRole, getUserRoles, removeRole } = require('./rolesFunctions');
+const {sendDm} = require('./../functions/reply')
 const Config = require('../config');
 
 const joinChallange = async function (member, guild, competition) {
+
+    if(competition == 'easterEgg') {
+        await createRole(guild, {name: 'EasterEggHunterHunter', color: 'DARK_PURPLE'});
+        await addRoleToUser(member, guild, 'EasterEggHunterHunter');
+        return;
+    }
 
     if(competition !== 'AiChallange' && competition !== 'AiColiseum') {
         throw 'Invalid competition:' + competition;
