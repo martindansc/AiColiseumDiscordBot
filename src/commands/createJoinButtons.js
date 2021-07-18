@@ -49,9 +49,9 @@ function joinButtons() {
         text: `
         **Click a button to join a competition**.
         When you join a competition you will get the discord roles associated to it,
-        you will get access to some extra channels and get notified when new events 
-        related to the competition. You can also leave if you want to stop 
-        reciving notifications.
+        you will get access to some extra channels and get notified when there are  
+        new events related to the competition. You can also leave if you want to stop 
+        receive notifications.
         
         **AIChallange:** Competition for middle and high school students around Catalonia (only in catalan).
         **AIColiseum:** Main competition open to everyone.`,
