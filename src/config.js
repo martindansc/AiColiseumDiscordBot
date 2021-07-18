@@ -3,5 +3,6 @@ env.config();
 
 module.exports = {
     token: process.env.TOKEN,
-    prefix: '!'
+    prefix: '!',
+    currentYear: process.env.currentYear || new Date().getFullYear()
 };

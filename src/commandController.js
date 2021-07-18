@@ -9,7 +9,13 @@ class CommandController {
         const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
         for (const file of commandFiles) {
             const command = require(`./commands/${file}`);
-            this.commands.set(command.name, command);
+            this.commands.set(command.name.toLowerCase(), command);
+        }
+
+        const interactionFiles = fs.readdirSync('./src/interactions').filter(file => file.endsWith('.js'));
+        for (const file of interactionFiles) {
+            const command = require(`./interactions/${file}`);
+            this.commands.set(command.name.toLowerCase(), command);
         }
     }
     
@@ -21,28 +27,21 @@ class CommandController {
         return message.channel.type === 'dm';
     }
     
-    checkCorrectArgs(command, args, message) {
-        if (command.args && !args.length) {
-            let reply = `You didn't provide any arguments, ${message.author}!`;
-    
-            if (command.usage) {
-                reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
-            }
-    
-            message.channel.send(reply);
-            return false;
-        }
-        
-        return true;
-    }
-    
     getCommand(message) {
-        let args = message.content.slice(Config.prefix.length).trim().split(/ +/);
-        let commandName = args.shift().toLowerCase();
+        const args = message.content.slice(Config.prefix.length).trim().split(/ +/);
+        const commandName = args.shift().toLowerCase();
         return {commandName, args};
     }
 
-    execute(message) {
+    getCommandButton(button) {
+        const args = button.id.slice(Config.prefix.length).trim().split(/ +/);
+
+        const commandName = args.shift().toLowerCase();
+        if(button.values) args = args.append(button.values);
+        return {commandName, args};
+    }
+
+    async execute(message) {
         if (!this.checkMessageIsCommand(message) || this.checkMessageDm(message)) return;
 
         const {commandName, args} = this.getCommand(message);
@@ -51,14 +50,23 @@ class CommandController {
 
         const command = this.commands.get(commandName);
 
-        const correctArgs = this.checkCorrectArgs(command, args, message);
-        if(!correctArgs) return;
-
         try {
-            command.execute(message, args);
+            await command.execute(message, args);
         } catch (error) {
             console.error(error);
-            message.reply('there was an error trying to execute that command!');
+            message.reply('There was an error trying to execute that command!');
+        }
+    }
+
+    async executeButton(button) {
+        const {commandName, args} = this.getCommandButton(button);
+        
+        const command = this.commands.get(commandName);
+        try {
+            await command.execute(button, args);
+        } catch (error) {
+            console.error(error);
+            message.reply('There was an error trying to execute that command!');
         }
     }
 }
