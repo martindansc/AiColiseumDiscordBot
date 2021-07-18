@@ -18,9 +18,9 @@ client.on('message', message => {
 });
 
 client.on('clickMenu', (button) => {
-  client.commands.executeButton(button);
+  client.commands.executeInteraction(button);
 });
 
 client.on('clickButton', (button) => {
-  client.commands.executeButton(button);
+  client.commands.executeInteraction(button);
 });
