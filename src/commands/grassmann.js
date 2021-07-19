@@ -7,7 +7,7 @@ The legend says that if you stay around you can still find the infamous knight i
 you just need to pay attention and please, be cautious, you don't want to get trapped into one of his tricky... deadly maps.`;
 
 module.exports = {
-    name: 'grassman',
+    name: 'grassmann',
     description: 'Explains the mith of grassman, the infamous knight',
     execute: (message) => {
         message.reply(info);
