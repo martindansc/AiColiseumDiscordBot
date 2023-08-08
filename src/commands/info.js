@@ -1,18 +1,10 @@
 let info = `
-Current competition: **AiColisuem 2021**
+Current competition: **AiColiseum 2022**
 
-**Schedule**
-July 16th, 14:00: Game release. We'll upload the rules and documentation.
-July 17th, 13:59: Submission deadline for the 24h Challenge.
-July 17th, 20:00: Stream of the 24h Challenge.
-July 25th, 23:59: Submission deadline for the Sprint Tournament.
-July 26th, 19:00: Stream of the Sprint Tournament.
-August 1st, 23:59: Submission deadline for the Eduard Khil Tournament.
-August 2nd, 19:00: Stream of the Eduard Khil Tournament.
-August 8th, 23:59: Submission deadline for the Final Tournament.
-August 9th, 19:00: Stream of the Final Tournament.
+We are pleased to announce that AI Coliseum 2022 is starting on July 2nd at 10 am (GMT+2) and, as always, there will be more than € 1000 in prizes! We invite you to attend the game release and Challenge 8h at the Facultat de Matemàtiques i Estadística of the UPC. There will be free breakfast, lunch and snacks for all attendees. Find more information here.
 
-More information here: https://www.coliseum.ai/AIColiseum2021?lang=en&tournament=aic2021`;
+If this is the first time you participate in this event, we encourage you to check the materials we provide in the web and the games used in previous editions. Also, you are more than welcome to join our Discord channel to stay in touch with our community and developers.
+`;
 
 module.exports = {
     name: 'info',
