@@ -4,16 +4,26 @@ const client  = new Discord.Client();
 require('discord-buttons')(client);
 const Config = require('./config');
 const CommandController = require('./commandController');
+const Honeypot = require('./honeypot');
 
 // Init bot
 client.commands = new CommandController();
 client.login(Config.token);
+
+const honeypot = new Honeypot(client);
+
 client.on('ready', () => {
-  console.info(`Logged in as ${client .user.tag}!`);
+  if (Config.honeypotChannelId) {
+    console.info(`Honeypot active on channel ${Config.honeypotChannelId}, window: ${Config.honeypotWindowMinutes}min`);
+  } else {
+    console.info('Honeypot disabled (no HONEYPOT_CHANNEL_ID set)');
+  }
+  console.info(`Logged in as ${client.user.tag}!`);
 });
 
 // Bind events
 client.on('message', message => {
+  honeypot.handleMessage(message);
 	client.commands.execute(message);
 });
 
