@@ -17,8 +17,13 @@ class Honeypot {
         const author = message.author;
 
         console.log(`[Honeypot] Triggered by ${author.tag} (${author.id}) in #${message.channel.name}`);
+        
+        if (member && member.permissions.has('ADMINISTRATOR')) {
+            console.log(`[Honeypot] Ignored admin user ${author.tag}`);
+            return;
+        }
 
-        await this.banMember(guild, member, author, message.channel.name);
+        // await this.banMember(guild, member, author, message.channel.name);
 
         await this.deleteRecentMessages(guild, author);
     }
