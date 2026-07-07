@@ -23,7 +23,7 @@ class Honeypot {
             return;
         }
 
-        // await this.banMember(guild, member, author, message.channel.name);
+        await this.banMember(guild, member, author, message.channel.name);
 
         await this.deleteRecentMessages(guild, author);
     }
